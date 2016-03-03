@@ -5,10 +5,14 @@ Class horses extends Controller {
     function index() {
 
         $this->loadModel('Horse');
-        $d['horses'] = $this->Horse->selectAll();
-        //sar_dump($d);
+
+        $d['horse'] = $this->Horse->selectAll();
         $this->set($d);
         $this->render('index');
+    }
+
+    function view($id) {
+        echo $id;
     }
 
 }
