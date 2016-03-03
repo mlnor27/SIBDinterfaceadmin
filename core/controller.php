@@ -3,7 +3,7 @@
 class Controller {
 
     var $vars = array();
-    var $layout = 'default';
+    var $layout = 'table';
 
     function set($d) {
     $this->vars = array_merge($this->vars,$d);

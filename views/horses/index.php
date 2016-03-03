@@ -1,1 +1,6 @@
-<?php foreach($horse as $d) {echo $d;}; ?>
+<?php
+    foreach($horses as $d)
+    {
+        echo "<td>".$d['name']."</td>";
+    }
+?>
