@@ -4,7 +4,7 @@ Class horse extends Model {
     var $table = 'Horse';
 
     function selectAll() {
-        $this->find();
+        return $this->find();
     }
 
 }
