@@ -35,5 +35,7 @@ foreach($content['horse'] as $d) {
             </td>
         </tr>
     </table>';
+
 }
+
 ?>

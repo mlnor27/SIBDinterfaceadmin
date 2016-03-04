@@ -3,7 +3,7 @@
 class Controller {
 
     var $vars = array();
-    var $layout = 'default';
+    var $layout = 'table';
 
     function __construct()
     {
