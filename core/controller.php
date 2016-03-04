@@ -5,12 +5,23 @@ class Controller {
     var $vars = array();
     var $layout = 'default';
 
+    function __construct()
+    {
+        if (isset($this->models)) {
+            foreach($this->models as $v) {
+                $this->loadModel($v);
+            }
+        }
+    }
+
     function set($d) {
     $this->vars = array_merge($this->vars,$d);
     }
 
     function render($filename) {
-        extract($this->vars);
+        global $content;
+        $content = $this->vars;
+        //extract($this->vars);
         ob_start();
         require(ROOT.'/views/'.get_class($this).'/'.$filename.'.php');
         $content_for_layout = ob_get_clean();
