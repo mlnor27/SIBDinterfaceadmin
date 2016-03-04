@@ -1,11 +1,16 @@
 <?php
 
+require_once(ROOT."models/db.php");
+
 Class horse extends Model {
 
     var $table = 'Horse';
 
-    function selectAll() {
-        return $this->find();
+
+    function select($id){
+
+
+        return;
     }
 
 }

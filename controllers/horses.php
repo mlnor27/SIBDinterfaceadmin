@@ -6,13 +6,14 @@ Class horses extends Controller {
 
         $this->loadModel('Horse');
 
-        $d['horse'] = $this->Horse->selectAll();
+        $d['horse'] = $this->Horse->find();
         $this->set($d);
         $this->render('index');
     }
 
     function view($id) {
-        echo $id;
+        $this->loadModel('Horse');
+
     }
 
 }

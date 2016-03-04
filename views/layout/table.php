@@ -46,7 +46,7 @@
 <section id="container" class="">
 
 
-    <?php echo $content_for_layout; ?>
+    <?php echo $content_for_layout; echo ROOT;?>
 
     <header class="header dark-bg">
         <div class="toggle-nav">
@@ -76,7 +76,7 @@
                 <!-- task notificatoin start -->
                 <li id="task_notificatoin_bar" class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="icon-task-l"></is>
+                            <span class="icon-task-l"></span>
                                 <span class="badge bg-important">6</span>
                     </a>
                     <ul class="dropdown-menu extended tasks-bar">
