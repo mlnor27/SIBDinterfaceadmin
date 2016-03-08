@@ -321,16 +321,6 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <?php
-                if ($_SESSION['co']){
-                    echo "<li class='sub-menu'>
-                                <a class='' href='".WEBROOT."auth/deconnect'>
-                                    <i class='icon_house_alt'></i>
-                                    <span>Déconnexion</span>
-                                </a>
-                            </li>";
-                }
-                ?>
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
                         <i class="icon_document_alt"></i>
