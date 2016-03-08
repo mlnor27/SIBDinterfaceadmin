@@ -20,7 +20,7 @@
     <link href="<?= WEBROOT ?>css/font-awesome.min.css" rel="stylesheet" />
     <!-- full calendar css-->
     <link href="<?= WEBROOT ?>assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-    <link href="../../assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
+    <link href="<?= WEBROOT ?>assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
     <!-- easy pie chart-->
     <link href="<?= WEBROOT ?>assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
     <!-- owl carousel -->
@@ -76,8 +76,8 @@
                 <!-- task notificatoin start -->
                 <li id="task_notificatoin_bar" class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="icon-task-l"></span>
-                                <span class="badge bg-important">6</span>
+                        <span class="icon-task-l"></span>
+                        <span class="badge bg-important">6</span>
                     </a>
                     <ul class="dropdown-menu extended tasks-bar">
                         <div class="notify-arrow notify-arrow-blue"></div>
@@ -322,14 +322,14 @@
                     </a>
                 </li>
                 <?php
-                    if ($_SESSION['co']){
-                        echo "<li class='sub-menu'>
+                if ($_SESSION['co']){
+                    echo "<li class='sub-menu'>
                                 <a class='' href='".WEBROOT."auth/deconnect'>
                                     <i class='icon_house_alt'></i>
-                                    <span>Dashboard</span>
+                                    <span>Déconnexion</span>
                                 </a>
                             </li>";
-                    }
+                }
                 ?>
                 <li class="sub-menu">
                     <a href="javascript:;" class="">

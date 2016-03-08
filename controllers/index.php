@@ -1,19 +1,14 @@
 <?php
 
-Class horses extends Controller {
+Class index extends Controller {
 
-/*    public function setLayout($layout)
-    {
-        $this->layout = $layout;
-    }*/
-    //var $layout = 'index';
     var $models = array('Horse');
+    var $layout = 'index';
 
     function index() {
 
-        $this->layout = 'index';
-        $d['horse'] = $this->Horse->find();
-        $this->set($d);
+//        $d['horse'] = $this->Horse->find();
+//        $this->set($d);
         $this->render('index');
     }
 

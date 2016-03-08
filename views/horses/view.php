@@ -5,5 +5,4 @@ var_dump($tab);
     echo $tab[1] ." = ". $content['horse']['horse_id'];
 
 
-
-    ?>
+?>

@@ -1,7 +1,7 @@
 <?php
 global $content;
 $tab = array_keys($content['horse']);
-var_dump($tab);
+//var_dump($tab);
 
 foreach($content['horse'] as $d) {
    echo'
