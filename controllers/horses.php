@@ -7,12 +7,19 @@ Class horses extends Controller {
         $this->layout = $layout;
     }*/
     //var $layout = 'index';
-    var $models = array('Horse');
+    var $models = array('MHorse');
 
     function index() {
 
+        $this->loadModel('user');
         $this->layout = 'index';
-        $d['horse'] = $this->Horse->find();
+        $d['table'] = $this->user->selectTab();
+        //var_dump($d['table']);
+        $this->set($d);
+        $this->render('index');
+
+        $this->layout = 'index';
+        $d['horse'] = $this->MHorse->find();
         $this->set($d);
         $this->render('index');
     }
@@ -25,8 +32,6 @@ Class horses extends Controller {
         $d['horse'] = $d['horse'][0];
         $this->set($d);
         $this->render('view');
-
-
     }
 
 }

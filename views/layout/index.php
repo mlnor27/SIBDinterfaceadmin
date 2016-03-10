@@ -315,7 +315,7 @@
                 global $content;
                 foreach ($content["table"] as $c) {
                     echo '<li class="active" >
-                    <a class="" href = "index.html" >
+                    <a class="" href = "'.WEBROOT.$c['Table_name'].'/index" >
                         <span >'.$c["Table_name"].'</span >
                     </a >
                 </li >';

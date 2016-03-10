@@ -2,9 +2,9 @@
 
 require_once(ROOT."models/db.php");
 
-Class horse extends Model {
+Class MHorse extends Model {
 
-    var $table = 'Horse';
+    var $table = 'horses';
 
 
     function select($id){
