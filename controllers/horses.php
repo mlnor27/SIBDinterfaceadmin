@@ -27,7 +27,7 @@ Class horses extends Controller {
     function view($id) {
 
         $d['horse'] = $this->Horse->find(array(
-            'conditions' => 'horse_id='.$id
+            'conditions' => 'horses_id='.$id
         ));
         $d['horse'] = $d['horse'][0];
         $this->set($d);

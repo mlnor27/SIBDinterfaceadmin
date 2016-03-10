@@ -222,11 +222,15 @@
                 <!-- inbox notificatoin end -->
                 <!-- alert notification start-->
                 <li id="alert_notificatoin_bar" class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-
-                        <i class="icon-bell-l"></i>
-                        <span class="badge bg-important">7</span>
-                    </a>
+                    <?php
+                    if ($_SESSION['id']){
+                        echo "<li class='sub-menu'>
+                                <a class='' href='".WEBROOT."auth/deconnect'>
+                                    <span>Déconnexion</span>
+                                </a>
+                            </li>";
+                    }
+                    ?>
                     <ul class="dropdown-menu extended notification">
                         <div class="notify-arrow notify-arrow-blue"></div>
                         <li>
