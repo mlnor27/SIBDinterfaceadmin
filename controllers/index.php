@@ -2,14 +2,17 @@
 
 Class index extends Controller {
 
-    var $models = array('Horse');
-    var $layout = 'index';
+    var $models = array('User');
+
 
     function index() {
-
-//        $d['horse'] = $this->Horse->find();
-//        $this->set($d);
+        $this->loadModel('user');
+        $this->layout = 'index';
+        $d['table'] = $this->user->selectTab();
+        //var_dump($d['table']);
+        $this->set($d);
         $this->render('index');
+
     }
 
     function view($id) {

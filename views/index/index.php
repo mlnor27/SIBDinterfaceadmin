@@ -1,1 +1,8 @@
-<h1>BIENVENUE SUR L'ACCUEIL</h1>
+<?php
+    var_dump($d);
+    //echo $content_for_layout;
+
+
+
+
+?>

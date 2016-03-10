@@ -45,9 +45,6 @@
 <!-- container section start -->
 <section id="container" class="">
 
-
-    <?php echo $content_for_layout; echo ROOT;?>
-
     <header class="header dark-bg">
         <div class="toggle-nav">
             <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
@@ -171,7 +168,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="./../../img/avatar-mini.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="./<?= WEBROOT ?>img/avatar-mini.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Greg  Martin</span>
                                     <span class="time">1 min</span>
@@ -183,7 +180,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="./../../img/avatar-mini2.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="./<?= WEBROOT ?>img/avatar-mini2.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Bob   Mckenzie</span>
                                     <span class="time">5 mins</span>
@@ -195,7 +192,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="./../../img/avatar-mini3.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="./<?= WEBROOT ?>img/avatar-mini3.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Phillip   Park</span>
                                     <span class="time">2 hrs</span>
@@ -207,7 +204,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="./../../img/avatar-mini4.jpg"></span>
+                                <span class="photo"><img alt="avatar" src="./<?= WEBROOT ?>img/avatar-mini4.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Ray   Munoz</span>
                                     <span class="time">1 day</span>
@@ -273,7 +270,7 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="../../img/avatar1_small.jpg">
+                                <img alt="" src="<?= WEBROOT ?>img/avatar1_small.jpg">
                             </span>
                         <span class="username">Jenifer Smith</span>
                         <b class="caret"></b>
@@ -313,78 +310,17 @@
     <!--sidebar start-->
     <aside>
         <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
             <ul class="sidebar-menu">
-                <li class="active">
-                    <a class="" href="index.html">
-                        <i class="icon_house_alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon_document_alt"></i>
-                        <span>Forms</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="form_component.html">Form Elements</a></li>
-                        <li><a class="" href="form_validation.html">Form Validation</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon_desktop"></i>
-                        <span>UI Fitures</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="general.html">Elements</a></li>
-                        <li><a class="" href="buttons.html">Buttons</a></li>
-                        <li><a class="" href="grids.html">Grids</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="" href="widgets.html">
-                        <i class="icon_genius"></i>
-                        <span>Widgets</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="chart-chartjs.html">
-                        <i class="icon_piechart"></i>
-                        <span>Charts</span>
-
-                    </a>
-
-                </li>
-
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon_table"></i>
-                        <span>Tables</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="basic_table.html">Basic Table</a></li>
-                    </ul>
-                </li>
-
-                <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon_documents_alt"></i>
-                        <span>Pages</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="profile.html">Profile</a></li>
-                        <li><a class="" href="login.html"><span>Login Page</span></a></li>
-                        <li><a class="" href="blank.html">Blank Page</a></li>
-                        <li><a class="" href="404.html">404 Error</a></li>
-                    </ul>
-                </li>
-
-            </ul>
+                <?php
+                global $content;
+                foreach ($content["table"] as $c) {
+                    echo '<li class="active" >
+                    <a class="" href = "index.html" >
+                        <span >'.$c["Table_name"].'</span >
+                    </a >
+                </li >';
+                }
+                ?>
             <!-- sidebar menu end-->
         </div>
     </aside>
@@ -520,7 +456,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td><img src="../../img/Germany.png" style="height:18px; margin-top:-2px;"></td>
+                                    <td><img src="<?= WEBROOT ?>img/Germany.png" style="height:18px; margin-top:-2px;"></td>
                                     <td>Germany</td>
                                     <td>2563</td>
                                     <td>1025</td>
@@ -535,7 +471,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><img src="../../img/India.png" style="height:18px; margin-top:-2px;"></td>
+                                    <td><img src="<?= WEBROOT ?>img/India.png" style="height:18px; margin-top:-2px;"></td>
                                     <td>India</td>
                                     <td>3652</td>
                                     <td>2563</td>
@@ -550,7 +486,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><img src="../../img/Spain.png" style="height:18px; margin-top:-2px;"></td>
+                                    <td><img src="<?= WEBROOT ?>img/Spain.png" style="height:18px; margin-top:-2px;"></td>
                                     <td>Spain</td>
                                     <td>562</td>
                                     <td>452</td>
@@ -565,7 +501,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><img src="../../img/India.png" style="height:18px; margin-top:-2px;"></td>
+                                    <td><img src="<?= WEBROOT ?>img/India.png" style="height:18px; margin-top:-2px;"></td>
                                     <td>Russia</td>
                                     <td>1258</td>
                                     <td>958</td>
@@ -580,7 +516,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><img src="../../img/Spain.png" style="height:18px; margin-top:-2px;"></td>
+                                    <td><img src="<?= WEBROOT ?>img/Spain.png" style="height:18px; margin-top:-2px;"></td>
                                     <td>USA</td>
                                     <td>4856</td>
                                     <td>3621</td>
@@ -595,7 +531,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><img src="../../img/Germany.png" style="height:18px; margin-top:-2px;"></td>
+                                    <td><img src="<?= WEBROOT ?>img/Germany.png" style="height:18px; margin-top:-2px;"></td>
                                     <td>Brazil</td>
                                     <td>265</td>
                                     <td>102</td>
@@ -610,7 +546,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><img src="../../img/Germany.png" style="height:18px; margin-top:-2px;"></td>
+                                    <td><img src="<?= WEBROOT ?>img/Germany.png" style="height:18px; margin-top:-2px;"></td>
                                     <td>Coloumbia</td>
                                     <td>265</td>
                                     <td>102</td>
@@ -625,7 +561,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><img src="../../img/Germany.png" style="height:18px; margin-top:-2px;"></td>
+                                    <td><img src="<?= WEBROOT ?>img/Germany.png" style="height:18px; margin-top:-2px;"></td>
                                     <td>France</td>
                                     <td>265</td>
                                     <td>102</td>
@@ -730,7 +666,7 @@
                                     <li class="by-me">
                                         <!-- Use the class "pull-left" in avatar -->
                                         <div class="avatar pull-left">
-                                            <img src="../../img/user.jpg" alt=""/>
+                                            <img src="<?= WEBROOT ?>img/user.jpg" alt=""/>
                                         </div>
 
                                         <div class="chat-content">
@@ -745,7 +681,7 @@
                                     <li class="by-other">
                                         <!-- Use the class "pull-right" in avatar -->
                                         <div class="avatar pull-right">
-                                            <img src="../../img/user22.png" alt=""/>
+                                            <img src="<?= WEBROOT ?>img/user22.png" alt=""/>
                                         </div>
 
                                         <div class="chat-content">
@@ -758,7 +694,7 @@
 
                                     <li class="by-me">
                                         <div class="avatar pull-left">
-                                            <img src="../../img/user.jpg" alt=""/>
+                                            <img src="<?= WEBROOT ?>img/user.jpg" alt=""/>
                                         </div>
 
                                         <div class="chat-content">
@@ -771,7 +707,7 @@
                                     <li class="by-other">
                                         <!-- Use the class "pull-right" in avatar -->
                                         <div class="avatar pull-right">
-                                            <img src="../../img/user22.png" alt=""/>
+                                            <img src="<?= WEBROOT ?>img/user22.png" alt=""/>
                                         </div>
 
                                         <div class="chat-content">
@@ -813,7 +749,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                 <span class="profile-ava pull-right">
-                                        <img alt="" class="simple" src="../../img/avatar1_small.jpg">
+                                        <img alt="" class="simple" src="<?= WEBROOT ?>img/avatar1_small.jpg">
                                         Jenifer smith
                                 </span>
                                 </div>
@@ -831,7 +767,7 @@
                                 </td>
                                 <td>
                                     <span class="profile-ava">
-                                        <img alt="" class="simple" src="../../img/avatar1_small.jpg">
+                                        <img alt="" class="simple" src="<?= WEBROOT ?>img/avatar1_small.jpg">
                                     </span>
                                 </td>
                             </tr>
@@ -869,7 +805,7 @@
                                 </td>
                                 <td>
                                       <span class="profile-ava">
-                                        <img alt="" class="simple" src="../../img/avatar1_small.jpg">
+                                        <img alt="" class="simple" src="<?= WEBROOT ?>img/avatar1_small.jpg">
                                       </span>
                                 </td>
                             </tr>
@@ -919,7 +855,7 @@
                                 </td>
                                 <td>
                                       <span class="profile-ava">
-                                        <img alt="" class="simple" src="../../img/avatar1_small.jpg">
+                                        <img alt="" class="simple" src="<?= WEBROOT ?>img/avatar1_small.jpg">
                                       </span>
                                 </td>
                             </tr>
@@ -1035,45 +971,45 @@
 <!-- container section start -->
 
 <!-- javascripts -->
-<script src="../../js/jquery.js"></script>
-<script src="../../js/jquery-ui-1.10.4.min.js"></script>
-<script src="../../js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="../../js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="<?= WEBROOT ?>js/jquery.js"></script>
+<script src="<?= WEBROOT ?>js/jquery-ui-1.10.4.min.js"></script>
+<script src="<?= WEBROOT ?>js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="<?= WEBROOT ?>js/jquery-ui-1.9.2.custom.min.js"></script>
 <!-- bootstrap -->
-<script src="../../js/bootstrap.min.js"></script>
+<script src="<?= WEBROOT ?>js/bootstrap.min.js"></script>
 <!-- nice scroll -->
-<script src="../../js/jquery.scrollTo.min.js"></script>
-<script src="../../js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="<?= WEBROOT ?>js/jquery.scrollTo.min.js"></script>
+<script src="<?= WEBROOT ?>js/jquery.nicescroll.js" type="text/javascript"></script>
 <!-- charts scripts -->
-<script src="../../assets/jquery-knob/../../js/jquery.knob.js"></script>
-<script src="../../js/jquery.sparkline.js" type="text/javascript"></script>
-<script src="../../assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-<script src="../../js/owl.carousel.js" ></script>
+<script src="<?= WEBROOT ?>assets/jquery-knob/<?= WEBROOT ?>js/jquery.knob.js"></script>
+<script src="<?= WEBROOT ?>js/jquery.sparkline.js" type="text/javascript"></script>
+<script src="<?= WEBROOT ?>assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+<script src="<?= WEBROOT ?>js/owl.carousel.js" ></script>
 <!-- jQuery full calendar -->
-<<script src="../../js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
-<script src="../../assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+<<script src="<?= WEBROOT ?>js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+<script src="<?= WEBROOT ?>assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
 <!--script for this page only-->
-<script src="../../js/calendar-custom.js"></script>
-<script src="../../js/jquery.rateit.min.js"></script>
+<script src="<?= WEBROOT ?>js/calendar-custom.js"></script>
+<script src="<?= WEBROOT ?>js/jquery.rateit.min.js"></script>
 <!-- custom select -->
-<script src="../../js/jquery.customSelect.min.js" ></script>
-<script src="../../assets/chart-master/Chart.js"></script>
+<script src="<?= WEBROOT ?>js/jquery.customSelect.min.js" ></script>
+<script src="<?= WEBROOT ?>assets/chart-master/Chart.js"></script>
 
 <!--custome script for all page-->
-<script src="../../js/scripts.js"></script>
+<script src="<?= WEBROOT ?>js/scripts.js"></script>
 <!-- custom script for this page-->
-<script src="../../js/sparkline-chart.js"></script>
-<script src="../../js/easy-pie-chart.js"></script>
-<script src="../../js/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../../js/jquery-jvectormap-world-mill-en.js"></script>
-<script src="../../js/xcharts.min.js"></script>
-<script src="../../js/jquery.autosize.min.js"></script>
-<script src="../../js/jquery.placeholder.min.js"></script>
-<script src="../../js/gdp-data.js"></script>
-<script src="../../js/morris.min.js"></script>
-<script src="../../js/sparklines.js"></script>
-<script src="../../js/charts.js"></script>
-<script src="../../js/jquery.slimscroll.min.js"></script>
+<script src="<?= WEBROOT ?>js/sparkline-chart.js"></script>
+<script src="<?= WEBROOT ?>js/easy-pie-chart.js"></script>
+<script src="<?= WEBROOT ?>js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<?= WEBROOT ?>js/jquery-jvectormap-world-mill-en.js"></script>
+<script src="<?= WEBROOT ?>js/xcharts.min.js"></script>
+<script src="<?= WEBROOT ?>js/jquery.autosize.min.js"></script>
+<script src="<?= WEBROOT ?>js/jquery.placeholder.min.js"></script>
+<script src="<?= WEBROOT ?>js/gdp-data.js"></script>
+<script src="<?= WEBROOT ?>js/morris.min.js"></script>
+<script src="<?= WEBROOT ?>js/sparklines.js"></script>
+<script src="<?= WEBROOT ?>js/charts.js"></script>
+<script src="<?= WEBROOT ?>js/jquery.slimscroll.min.js"></script>
 <script>
 
     //knob
