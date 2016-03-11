@@ -14,19 +14,14 @@ Class horses extends Controller {
         $this->loadModel('user');
         $this->layout = 'index';
         $d['table'] = $this->user->selectTab();
-        //var_dump($d['table']);
-        $this->set($d);
-        $this->render('index');
-
-        $this->layout = 'index';
         $d['horse'] = $this->MHorse->find();
         $this->set($d);
         $this->render('index');
     }
 
     function view($id) {
-
-        $d['horse'] = $this->Horse->find(array(
+        $this->layout = '';
+        $d['horse'] = $this->MHorse->find(array(
             'conditions' => 'horses_id='.$id
         ));
         $d['horse'] = $d['horse'][0];

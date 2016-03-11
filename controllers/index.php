@@ -9,7 +9,6 @@ Class index extends Controller {
         $this->loadModel('user');
         $this->layout = 'index';
         $d['table'] = $this->user->selectTab();
-        //var_dump($d['table']);
         $this->set($d);
         $this->render('index');
 

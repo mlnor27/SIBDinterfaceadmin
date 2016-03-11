@@ -1,6 +1,6 @@
 <?php
 
-Class horsedisease extends Controller
+Class horseparasite extends Controller
 {
 
     var $models = array('');
