@@ -32,11 +32,17 @@ class Controller {
         }
     }
 
-    function loadModel($name) {
-        require_once(ROOT.'models/'.strtolower($name).'.php');
-        $this->$name = new $name();
-    }
+    function loadModel($name)
+    {
+            require_once(ROOT . 'models/' . strtolower($name) . '.php');
+            $this->$name = new $name();
+        }
 
+    function loadTable() {
+        $this->loadModel('user');
+        $d['table'] = $this->user->selectTab();
+        $this->set($d);
+    }
 }
 
 ?>

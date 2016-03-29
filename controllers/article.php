@@ -3,11 +3,13 @@
 Class article extends Controller
 {
 
-    var $models = array('');
+    var $models = array('user');
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $this->render('table');
     }
 
     function view($id)

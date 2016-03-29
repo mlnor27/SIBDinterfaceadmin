@@ -22,7 +22,6 @@ Class auth extends Controller {
         else {
             $connect = $this->user->connection($_POST);  //test du login et mdp à faire
             if ($connect) {
-                session_start();
                 $_SESSION['id'] = 1;
                 header('Location:' . WEBROOT . 'index');
             } else {

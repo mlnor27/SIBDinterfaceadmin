@@ -6,9 +6,7 @@ Class home extends Controller {
     var $layout;
 
     function index() {
-        $this->loadModel('user');
-        $d['table'] = $this->user->selectTab();
-        $this->set($d);
+        $this->loadTable();
         $this->render('index');
 
     }
