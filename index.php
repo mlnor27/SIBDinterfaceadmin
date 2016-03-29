@@ -20,15 +20,22 @@ if (!isset($_SESSION['id']) && $controller == 'index') {
     $controller = 'auth';
 }
 
-require('controllers/'.$controller.'.php');
-$controller = new $controller();
-if(method_exists($controller,$action)){
-    unset($params[0]); unset($params[1]);
-    call_user_func_array(array($controller,$action),$params);
-    //$controller->$action();
+if (isset($_SESSION['id']) && $controller == 'index') {
+    $controller = 'home';
 }
-else{
-    echo 'erreur 404';
+
+//var_dump($controller,$action);
+if (file_exists(ROOT.'controllers/'.$controller.'.php')) {
+    require('controllers/' . $controller . '.php');
+    $controller = new $controller();
+    if (method_exists($controller, $action)) {
+        unset($params[0]);
+        unset($params[1]);
+        call_user_func_array(array($controller, $action), $params);
+        //$controller->$action();
+    } else {
+        echo 'erreur 404';
+    }
 }
 
 ?>

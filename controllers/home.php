@@ -1,13 +1,12 @@
 <?php
 
-Class index extends Controller {
+Class home extends Controller {
 
     var $models = array('User');
-
+    var $layout;
 
     function index() {
         $this->loadModel('user');
-        $this->layout = 'index';
         $d['table'] = $this->user->selectTab();
         $this->set($d);
         $this->render('index');

@@ -12,7 +12,7 @@ Class auth extends Controller {
             header('Location:'.WEBROOT.'index');
             return;
         }
-        $this->render('index');
+        $this->render('auth');
     }
 
     function login(){

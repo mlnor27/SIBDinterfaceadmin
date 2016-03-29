@@ -16,19 +16,19 @@ class Controller {
 
     function set($d) {
     $this->vars = array_merge($this->vars,$d);
-    }
+}
 
     function render($filename) {
         global $content;
         $content = $this->vars;
         //extract($this->vars);
         ob_start();
-        require(ROOT.'views/'.get_class($this).'/'.$filename.'.php');
+        require(ROOT.'views/'.$filename.'.php');
         $content_for_layout = ob_get_clean();
         if ($this->layout == false) {
             echo $content_for_layout;
         } else {
-            require(ROOT.'views/'.get_class($this).'/index.php');
+            require(ROOT.'views/'.$this->layout.'.php');
         }
     }
 
