@@ -20,6 +20,8 @@ class Controller {
 
     function render($filename) {
         global $content;
+        global $class;
+        $class = get_class($this);
         $content = $this->vars;
         //extract($this->vars);
         ob_start();

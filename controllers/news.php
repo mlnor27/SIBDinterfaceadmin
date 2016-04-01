@@ -3,16 +3,21 @@
 Class news extends Controller
 {
 
-    var $models = array('');
-
+    var $models = array('MNews');
+    var $layout;
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['news'] = $this->MNews->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MNews->del($id);
+        $this->render('table');
     }
 }
 

@@ -25,9 +25,10 @@ class Model {
         extract($data);
         if (isset($data['limit'])) { $limit = "LIMIT ".$data['limit']; }
         $sql = "SELECT $fields FROM ".$this->table." WHERE $conditions ORDER BY $order $limit";
+        var_dump($sql);
         $db = connect();
         $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
-        $results = $req->fetchAll();
+        $results = $req->fetchAll(PDO::FETCH_CLASS);
         $d = array();
         foreach ($results as $r){
             $d[] = $r;
@@ -90,7 +91,7 @@ class Model {
         {
             $id = $this->id;
         }
-        $sql= "DELETE FROM ".$this->table."WHERE" .$this->table."_id = ".$id;
+        $sql= "DELETE FROM ".$this->table." WHERE " .strtolower($this->table)."_id = ".$id;
         $db = connect();
         $req = $db->query($sql) or die ($db->errorInfo()."<br /> => ".$sql);
     }
