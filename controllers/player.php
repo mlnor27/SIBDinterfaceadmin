@@ -3,16 +3,22 @@
 Class player extends Controller
 {
 
-    var $models = array('');
+    var $models = array('MPlayer');
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['player'] = $this->MPlayer->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MPlayer->del($id);
+        header('Location:' . WEBROOT . 'player');
     }
 }
 

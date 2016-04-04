@@ -3,16 +3,22 @@
 Class horseaction extends Controller
 {
 
-    var $models = array('');
+    var $models = array('MHorseAction');
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['horseaction'] = $this->MHorseAction->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MHorseAction->del($id);
+        header('Location:' . WEBROOT . 'horseaction');
     }
 }
 

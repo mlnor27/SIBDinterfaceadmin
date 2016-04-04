@@ -3,16 +3,22 @@
 Class newspaperevent extends Controller
 {
 
-    var $models = array('');
+    var $models = array('MNewspaperEvents');
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['newspaperevent'] = $this->MNewspaperEvents->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MNewspaperEvents->del($id);
+        header('Location:' . WEBROOT . 'newspaperevent');
     }
 }
 

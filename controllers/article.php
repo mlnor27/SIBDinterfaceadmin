@@ -14,9 +14,11 @@ Class article extends Controller
         $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MArticle->del($id);
+        header('Location:' . WEBROOT . 'article');
     }
 }
 

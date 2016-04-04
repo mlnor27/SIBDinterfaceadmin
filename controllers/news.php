@@ -17,7 +17,7 @@ Class news extends Controller
     {
         $this->loadTable();
         $this->MNews->del($id);
-        $this->render('table');
+        header('Location:' . WEBROOT . 'news');
     }
 }
 

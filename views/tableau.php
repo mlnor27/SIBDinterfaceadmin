@@ -1,3 +1,9 @@
+<script type="text/javascript" language="javascript" src="<?php WEBROOT ?>js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php WEBROOT?>css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="<?php WEBROOT ?>js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="<?php WEBROOT ?>js/tableformations.js"></script>
+
+
 <div class="table-responsive">
     <table id="example" class="table" cellspacing="0" width="100%">
         <thead>
@@ -5,6 +11,7 @@
         global $class;
         global $content;
         $toto = false;
+        echo '<th></th>';
         foreach ($content[$class] as $data) {
             foreach ($data as $key => $value) {
                 if (!$toto) {
@@ -17,10 +24,12 @@
         </thead>
         <tbody>
         <?php
+
         foreach ($content[$class] as $data) {
             echo '<tr>';
             $classId = $class . '_id';
             $id = $data->$classId;
+            echo '<td> <input type="checkbox" name="check[]" value="'.$id.'"> </td>';
             foreach ($data as $value) {
                     echo '<td> ' . $value . ' </td>';
             }

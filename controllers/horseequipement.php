@@ -3,16 +3,22 @@
 Class horseequipement extends Controller
 {
 
-    var $models = array('');
+    var $models = array('MHorseEquipement');
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['horseequipement'] = $this->MHorseEquipement->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MHorseEquipement->del($id);
+        header('Location:' . WEBROOT . 'horseequipement');
     }
 }
 

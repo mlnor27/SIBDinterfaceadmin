@@ -2,21 +2,15 @@
 
 Class horses extends Controller {
 
-/*    public function setLayout($layout)
-    {
-        $this->layout = $layout;
-    }*/
-    //var $layout = 'index';
     var $models = array('MHorse');
+    var $layout;
 
     function index() {
 
-        $this->loadModel('user');
-        $this->layout = 'index';
-        $d['table'] = $this->user->selectTab();
-        $d['horse'] = $this->MHorse->find();
+        $this->loadTable();
+        $d['horses'] = $this->MHorse->find();
         $this->set($d);
-        $this->render('index');
+        $this->render('table');
     }
 
     function view($id) {
@@ -27,6 +21,13 @@ Class horses extends Controller {
         $d['horse'] = $d['horse'][0];
         $this->set($d);
         $this->render('view');
+    }
+
+    function delete($id)
+    {
+        $this->loadTable();
+        $this->MHorse->del($id);
+        header('Location:' . WEBROOT . 'horses');
     }
 
 }

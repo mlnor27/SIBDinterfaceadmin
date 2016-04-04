@@ -3,16 +3,22 @@
 Class newspaperad extends Controller
 {
 
-    var $models = array('');
+    var $models = array('MNewspaperAd');
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['newspaperad'] = $this->MNewspaperAd->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MNewspaperAd->del($id);
+        header('Location:' . WEBROOT . 'newspaperad');
     }
 }
 

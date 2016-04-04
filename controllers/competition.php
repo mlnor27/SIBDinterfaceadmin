@@ -3,29 +3,21 @@
 Class competition extends Controller
 {
     var $models = array('MCompetition');
+    var $layout;
 
     function index()
     {
-        $this->layout = 'index';
+        $this->loadTable();
         $d['competition'] = $this->MCompetition->find();
         $this->set($d);
-        $this->render('index');
-
-        $this->layout = 'index';
-        $d['del'] = $this->MCompetition->del();
-        $this->set($d);
-        $this->render('index');
-
-        $this->layout = 'index';
-        $d['insert'] = $this->MCompetition->save();
-        $this->set($d);
-        $this->render('index');
-
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MCompetition->del($id);
+        header('Location:' . WEBROOT . 'competition');
     }
 }
 

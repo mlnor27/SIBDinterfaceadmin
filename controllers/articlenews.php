@@ -5,6 +5,7 @@ Class articlenews extends Controller
 
     var $models = array('MArticleNews');
     var $layout;
+
     function index()
     {
         $this->loadTable();
@@ -13,9 +14,11 @@ Class articlenews extends Controller
         $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MArticleNews->del($id);
+        header('Location:' . WEBROOT . 'articlenews');
     }
 }
 

@@ -3,16 +3,23 @@
 Class competitionitem extends Controller
 {
 
-    var $models = array('');
+    var $models = array('MCompetitionItem');
+
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['competitionitem'] = $this->MCompetitionItem->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MCompetitionItem->del($id);
+        header('Location:' . WEBROOT . 'competitionitem');
     }
 }
 

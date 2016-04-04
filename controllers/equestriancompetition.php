@@ -3,16 +3,22 @@
 Class equestriancompetition extends Controller
 {
 
-    var $models = array('');
+    var $models = array('MEquestrianCompetition');
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['equestriancompetition'] = $this->MEquestrianCompetition->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MEquestrianCompetition->del($id);
+        header('Location:' . WEBROOT . 'equestriancompetition');
     }
 }
 

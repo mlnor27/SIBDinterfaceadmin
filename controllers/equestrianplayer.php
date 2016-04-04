@@ -3,15 +3,22 @@
 Class equestrianplayer extends Controller
 {
 
+    var $models = array('MEquestrianPlayer');
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['equestrianplayer'] = $this->MEquestrianPlayer->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MEquestrianPlayer->del($id);
+        header('Location:' . WEBROOT . 'equestrianplayer');
     }
 }
 

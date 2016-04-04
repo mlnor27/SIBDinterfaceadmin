@@ -3,16 +3,22 @@
 Class horseitem extends Controller
 {
 
-    var $models = array('');
+    var $models = array('MHorseItem');
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['horseitem'] = $this->MHorseItem->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MHorseItem->del($id);
+        header('Location:' . WEBROOT . 'horseitem');
     }
 }
 

@@ -3,16 +3,22 @@
 Class horseinjury extends Controller
 {
 
-    var $models = array('');
+    var $models = array('MHorseInjury');
+    var $layout;
 
     function index()
     {
-        return;
+        $this->loadTable();
+        $d['horseinjury'] = $this->MHorseInjury->find();
+        $this->set($d);
+        $this->render('table');
     }
 
-    function view($id)
+    function delete($id)
     {
-        return;
+        $this->loadTable();
+        $this->MHorseInjury->del($id);
+        header('Location:' . WEBROOT . 'horseinjury');
     }
 }
 

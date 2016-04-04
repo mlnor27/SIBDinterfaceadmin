@@ -23,6 +23,7 @@
     <link href="<?= WEBROOT ?>assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
     <!-- easy pie chart-->
     <link href="<?= WEBROOT ?>assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
     <!-- owl carousel -->
     <link rel="stylesheet" href="<?= WEBROOT ?>css/owl.carousel.css" type="text/css">
     <link href="<?= WEBROOT ?>css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
@@ -38,6 +39,8 @@
     <script src="<?= WEBROOT ?>js/html5shiv.js"></script>
     <script src="<?= WEBROOT ?>js/respond.min.js"></script>
     <script src="<?= WEBROOT ?>js/lte-ie7.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
     <![endif]-->
 </head>
 
