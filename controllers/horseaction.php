@@ -21,6 +21,16 @@ Class horseaction extends Controller
         $this->MHorseAction->del($id);
         header('Location:' . WEBROOT . 'horseaction');
     }
+
+    function add(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorseAction->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT . 'horses');
+        }
+    }
 }
 
 ?>

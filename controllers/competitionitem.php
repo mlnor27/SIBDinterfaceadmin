@@ -11,6 +11,8 @@ Class competitionitem extends Controller
     {
         $this->loadTable();
         $d['competitionitem'] = $this->MCompetitionItem->find();
+        $d['columnscompetitionitem'] = $this->MCompetitionItem->selectColumnsName('competitionitem');
+
         $this->set($d);
         $this->render('table');
     }
@@ -20,6 +22,16 @@ Class competitionitem extends Controller
         $this->loadTable();
         $this->MCompetitionItem->del($id);
         header('Location:' . WEBROOT . 'competitionitem');
+    }
+
+    function add(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MCompetitionItem->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT . 'horses');
+        }
     }
 }
 
