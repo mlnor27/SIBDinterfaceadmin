@@ -10,6 +10,8 @@ Class horseplayer extends Controller
     {
         $this->loadTable();
         $d['horseplayer'] = $this->MHorsePlayer->find();
+        $d['columnshorseplayer'] = $this->MHorsePlayer->selectColumnsName('horseplayer');
+
         $this->set($d);
         $this->render('table');
     }
@@ -19,6 +21,16 @@ Class horseplayer extends Controller
         $this->loadTable();
         $this->MHorsePlayer->del($id);
         header('Location:' . WEBROOT . 'horseplayer');
+    }
+
+    function add(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorsePlayer->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT . 'horses');
+        }
     }
 }
 

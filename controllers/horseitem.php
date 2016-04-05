@@ -10,6 +10,8 @@ Class horseitem extends Controller
     {
         $this->loadTable();
         $d['horseitem'] = $this->MHorseItem->find();
+        $d['columnshorseitem'] = $this->MHorseItem->selectColumnsName('horseitem');
+
         $this->set($d);
         $this->render('table');
     }
@@ -19,6 +21,16 @@ Class horseitem extends Controller
         $this->loadTable();
         $this->MHorseItem->del($id);
         header('Location:' . WEBROOT . 'horseitem');
+    }
+
+    function add(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorseItem->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT . 'horses');
+        }
     }
 }
 

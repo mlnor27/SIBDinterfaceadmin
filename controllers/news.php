@@ -9,6 +9,8 @@ Class news extends Controller
     {
         $this->loadTable();
         $d['news'] = $this->MNews->find();
+        $d['columnsnews'] = $this->MNews->selectColumnsName('news');
+
         $this->set($d);
         $this->render('table');
     }
@@ -18,6 +20,16 @@ Class news extends Controller
         $this->loadTable();
         $this->MNews->del($id);
         header('Location:' . WEBROOT . 'news');
+    }
+
+    function add(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MNews->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT . 'horses');
+        }
     }
 }
 

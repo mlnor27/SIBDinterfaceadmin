@@ -34,15 +34,13 @@ echo '<h2>'. $class . '</h2>';
             foreach ($data as $value) {
                 echo '<td> ' . $value . ' </td>';
             }
-            echo '<td><a href="' . WEBROOT . $class . '/delete/' . $id . '"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>';
-            echo '<td><a href="' . WEBROOT . $class . '/delete/' . $id . '"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></td>';
+            echo '<td><a href="' . WEBROOT . $class . '/modify/' . $id . '"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>';
             echo '<td><a href="' . WEBROOT . $class . '/delete/' . $id . '"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>';
             echo '</tr>';
         }
 
 
         ?>
-
         </tbody>
     </table>
     <form>

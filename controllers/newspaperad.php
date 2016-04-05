@@ -10,6 +10,8 @@ Class newspaperad extends Controller
     {
         $this->loadTable();
         $d['newspaperad'] = $this->MNewspaperAd->find();
+        $d['columnsnewspaperad'] = $this->MNewspaperAd->selectColumnsName('newspaperad');
+
         $this->set($d);
         $this->render('table');
     }
@@ -19,6 +21,16 @@ Class newspaperad extends Controller
         $this->loadTable();
         $this->MNewspaperAd->del($id);
         header('Location:' . WEBROOT . 'newspaperad');
+    }
+
+    function add(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MNewspaperAd->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT . 'horses');
+        }
     }
 }
 

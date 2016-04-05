@@ -31,4 +31,14 @@ Class horses extends Controller {
         header('Location:' . WEBROOT . 'horses');
     }
 
+    function add(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorse->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT . 'horses');
+        }
+    }
+
 }

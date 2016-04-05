@@ -10,6 +10,8 @@ Class equestriancompetition extends Controller
     {
         $this->loadTable();
         $d['equestriancompetition'] = $this->MEquestrianCompetition->find();
+        $d['columnsequestriancompetition'] = $this->MEquestrianCompetition->selectColumnsName('equestriancompetition');
+
         $this->set($d);
         $this->render('table');
     }
@@ -19,6 +21,16 @@ Class equestriancompetition extends Controller
         $this->loadTable();
         $this->MEquestrianCompetition->del($id);
         header('Location:' . WEBROOT . 'equestriancompetition');
+    }
+
+    function add(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MEquestrianCompetition->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT . 'horses');
+        }
     }
 }
 

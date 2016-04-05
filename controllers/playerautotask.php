@@ -10,6 +10,8 @@ Class playerautotask extends Controller
     {
         $this->loadTable();
         $d['playerautotask'] = $this->MPlayerAutoTask->find();
+        $d['columnsplayerautotask'] = $this->MPlayerAutoTask->selectColumnsName('playerautotask');
+
         $this->set($d);
         $this->render('table');
     }
@@ -19,6 +21,16 @@ Class playerautotask extends Controller
         $this->loadTable();
         $this->MPlayerAutoTask->del($id);
         header('Location:' . WEBROOT . 'playerautotask');
+    }
+
+    function add(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MPlayerAutoTask->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT . 'horses');
+        }
     }
 }
 

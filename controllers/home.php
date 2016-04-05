@@ -19,8 +19,6 @@ Class home extends Controller {
         $d['horse'] = $d['horse'][0];
         $this->set($d);
         $this->render('view');
-
-
     }
 
 }

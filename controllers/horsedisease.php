@@ -1,4 +1,4 @@
-é<?php
+<?php
 
 Class horsedisease extends Controller
 {
@@ -9,7 +9,9 @@ Class horsedisease extends Controller
     function index()
     {
         $this->loadTable();
-        $d['horsedisease'] = $this->MHorseAction->find();
+        $d['horsedisease'] = $this->MHorseDisease->find();
+        $d['columnshorsedisease'] = $this->MHorseDisease->selectColumnsName('horsedisease');
+
         $this->set($d);
         $this->render('table');
     }
@@ -17,8 +19,18 @@ Class horsedisease extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MHorseAction->del($id);
+        $this->MHorseDisease->del($id);
         header('Location:' . WEBROOT . 'horsedisease');
+    }
+
+    function add(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorseDisease->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT . 'horses');
+        }
     }
 }
 

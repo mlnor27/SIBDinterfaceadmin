@@ -54,7 +54,7 @@ class Model {
             $sql .= "WHERE " . $this->table . "_id=" . $data[$this->table . "_id"];
         }
         else{
-            $sql = "INSERT INTO ".$this->table."(";
+            $sql = "INSERT INTO ".$this->table." (";
             unset($data[$this->table . "_id"]);
             foreach ($data as $k => $v){
                 $sql .= "$k,";
@@ -63,7 +63,7 @@ class Model {
             $sql .=") VALUES (";
             foreach ($data as $v){
 
-                if (is_int($v)){
+                if (is_numeric($v)){
                     $sql .= "$v,";
                 }else{
                     $sql .= "'$v',";
@@ -97,7 +97,7 @@ class Model {
 
     public function selectColumnsName($table)
     {
-        $sql= "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" . $this->table . "'";
+        $sql= "SELECT DISTINCT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" . $this->table . "'";
         echo $sql;
         $db = connect();
         $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
