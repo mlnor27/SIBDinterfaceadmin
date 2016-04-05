@@ -10,6 +10,7 @@ Class horseaction extends Controller
     {
         $this->loadTable();
         $d['horseaction'] = $this->MHorseAction->find();
+        $d['columnshorseaction'] = $this->MHorseAction->selectColumnsName('horseaction');
         $this->set($d);
         $this->render('table');
     }

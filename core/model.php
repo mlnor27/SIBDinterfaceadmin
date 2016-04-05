@@ -95,6 +95,20 @@ class Model {
         $req = $db->query($sql) or die ($db->errorInfo()."<br /> => ".$sql);
     }
 
+    public function selectColumnsName($table)
+    {
+        $sql= "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" . $this->table . "'";
+        echo $sql;
+        $db = connect();
+        $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+        $results = $req->fetchAll(PDO::FETCH_CLASS);
+        $d = array();
+        foreach ($results as $r){
+            $d[] = $r;
+        }
+        return $d;
+    }
+
 
 }
 
