@@ -40,7 +40,6 @@ echo '<h2>'. $class . '</h2>';
             echo '</tr>';
         }
 
-
         ?>
 
         </tbody>
