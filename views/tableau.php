@@ -7,7 +7,7 @@
 global $class;
 global $content;
 
-echo '<h2>'. $class . '</h2>';
+echo '<h2>' . $class . '</h2>';
 ?>
 <div class="table-responsive">
 
@@ -16,10 +16,10 @@ echo '<h2>'. $class . '</h2>';
         <?php
 
         echo '<th></th>';
-        foreach ($content['columns'.$class] as $t) {
+        foreach ($content['columns' . $class] as $t) {
             foreach ($t as $value) {
-                    echo '<th> ' . $value . ' </th>';
-                }
+                echo '<th> ' . $value . ' </th>';
+            }
         }
         ?>
         </thead>
@@ -34,8 +34,9 @@ echo '<h2>'. $class . '</h2>';
             foreach ($data as $value) {
                 echo '<td> ' . $value . ' </td>';
             }
-            echo '<td><a href="' . WEBROOT . $class . '/modify/' . $id . '"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>';
+
             echo '<td><a href="' . WEBROOT . $class . '/delete/' . $id . '"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>';
+            echo '<td><a href="' . WEBROOT . $class . '/update/' . $id . '"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>';
             echo '</tr>';
         }
 
@@ -47,6 +48,7 @@ echo '<h2>'. $class . '</h2>';
                 data-target="#myModal"> Ajouter
         </button>
     </form>
+
     <?php include("addobject.php") ?>
 
 </div>

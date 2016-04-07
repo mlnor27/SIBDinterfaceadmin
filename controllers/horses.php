@@ -14,14 +14,15 @@ Class horses extends Controller {
         $this->render('table');
     }
 
-    function view($id) {
-        $this->layout = '';
-        $d['horse'] = $this->MHorse->find(array(
+    function update($id) {
+
+        $this->loadTable();
+        $d['horses'] = $this->MHorse->find(array(
             'conditions' => 'horses_id='.$id
         ));
-        $d['horse'] = $d['horse'][0];
+        $d['columnshorses'] = $this->MHorse->selectColumnsName('horses');
         $this->set($d);
-        $this->render('view');
+        $this->render('update');
     }
 
     function delete($id)
@@ -38,6 +39,16 @@ Class horses extends Controller {
             header('Location:' . WEBROOT . 'horses');
         }else{
             header('Location:' . WEBROOT . 'horses');
+        }
+    }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorse->save($_POST);
+            header('Location:' . WEBROOT . 'horses');
+        }else{
+            header('Location:' . WEBROOT);
         }
     }
 
