@@ -19,17 +19,24 @@ Class horseinjury extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MHorseInjury->del($id);
-        header('Location:' . WEBROOT . 'horseinjury');
+
+        if (count($_POST)>0){
+            $this->MHorseInjury->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'horseinjury');
+        }else{
+            $this->MHorseInjury->del($id);
+            header('Location:' . WEBROOT . 'horseinjury');
+        }
+
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MHorseInjury->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseinjury');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseinjury');
         }
     }
 }

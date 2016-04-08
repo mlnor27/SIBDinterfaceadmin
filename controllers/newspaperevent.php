@@ -19,17 +19,24 @@ Class newspaperevent extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MNewspaperEvents->del($id);
-        header('Location:' . WEBROOT . 'newspaperevent');
+
+        if (count($_POST)>0){
+            $this->MNewspaperEvents->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'newspaperevent');
+        }else{
+            $this->MNewspaperEvents->del($id);
+            header('Location:' . WEBROOT . 'newspaperevent');
+        }
+
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MNewspaperEvents->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'newspaperevent');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'newspaperevent');
         }
     }
 }

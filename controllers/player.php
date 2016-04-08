@@ -19,17 +19,24 @@ Class player extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MPlayer->del($id);
-        header('Location:' . WEBROOT . 'player');
+
+        if (count($_POST)>0){
+            $this->MPlayer->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'player');
+        }else{
+            $this->MPlayer->del($id);
+            header('Location:' . WEBROOT . 'player');
+        }
+
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MPlayer->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'player');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'player');
         }
     }
 }

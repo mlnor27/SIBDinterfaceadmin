@@ -73,7 +73,8 @@ class Model {
             $sql .= ")";
         }
         $db = connect();
-        $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+        //$req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+        $req = $db->query($sql) or die (header('Location: '));
 
         if (!isset($data[$this->table."_id"])){
             $this->id = $db->lastInsertId();
@@ -86,19 +87,22 @@ class Model {
 
     public function del($id=null)
     {
-        if($id==null)
-        {
+        if ($id == null) {
             $id = $this->id;
         }
-        $sql= "DELETE FROM ".$this->table." WHERE " .strtolower($this->table)."_id = ".$id;
+
+        $sql = "DELETE FROM " . $this->table . " WHERE " . strtolower($this->table) . "_id IN (". $id.")";
         $db = connect();
-        $req = $db->query($sql) or die ($db->errorInfo()."<br /> => ".$sql);
+        $req = $db->query($sql) or die ($db->errorInfo() . "<br /> => " . $sql);
+        //$req = $db->query($sql) or die ("<script>alert('".$db->errorInfo()."');</script>");
+
+
     }
 
     public function selectColumnsName($table)
     {
         $sql= "SELECT DISTINCT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" . $this->table . "'";
-        echo $sql;
+        //echo $sql;
         $db = connect();
         $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
         $results = $req->fetchAll(PDO::FETCH_CLASS);

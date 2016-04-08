@@ -19,17 +19,24 @@ Class equestriancompetition extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MEquestrianCompetition->del($id);
-        header('Location:' . WEBROOT . 'equestriancompetition');
+        if (count($_POST)>0){
+            $this->MEquestrianCompetition->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'equestriancompetition');
+
+        }else{
+            $this->MEquestrianCompetition->del($id);
+            header('Location:' . WEBROOT . 'equestriancompetition');
+
+        }
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MEquestrianCompetition->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'equestriancompetition');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'equestriancompetition');
         }
     }
 }

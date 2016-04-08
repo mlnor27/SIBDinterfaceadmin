@@ -34,6 +34,8 @@
     <link href="<?= WEBROOT ?>css/style-responsive.css" rel="stylesheet" />
     <link href="<?= WEBROOT ?>css/xcharts.min.css" rel=" stylesheet">
     <link href="<?= WEBROOT ?>css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+    <script type="text/javascript" src="<?= WEBROOT ?>js/myfunctions.js"></script>
+    <script type="text/javascript" src="<?= WEBROOT ?>js/ajax.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]-->
     <script src="<?= WEBROOT ?>js/html5shiv.js"></script>

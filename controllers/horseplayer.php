@@ -19,17 +19,24 @@ Class horseplayer extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MHorsePlayer->del($id);
-        header('Location:' . WEBROOT . 'horseplayer');
+        if (count($_POST)>0){
+            $this->MHorsePlayer->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'horseplayer');
+        }else{
+            $this->MHorsePlayer->del($id);
+            header('Location:' . WEBROOT . 'horseplayer');
+        }
+
+
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MHorsePlayer->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseplayer');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseplayer');
         }
     }
 }

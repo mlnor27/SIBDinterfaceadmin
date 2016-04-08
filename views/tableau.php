@@ -7,7 +7,7 @@
 global $class;
 global $content;
 
-echo '<h2>'. $class . '</h2>';
+echo '<h2 id="class_name">'. $class . '</h2>';
 ?>
 <div class="table-responsive">
 
@@ -30,7 +30,7 @@ echo '<h2>'. $class . '</h2>';
             echo '<tr>';
             $classId = $class . '_id';
             $id = $data->$classId;
-            echo '<td> <input type="checkbox" name="check[]" value="' . $id . '"> </td>';
+            echo '<td> <input type="checkbox" class="check_del" name="check[]" value="' . $id . '"> </td>';
             foreach ($data as $value) {
                 echo '<td> ' . $value . ' </td>';
             }
@@ -45,9 +45,12 @@ echo '<h2>'. $class . '</h2>';
     </table>
     <form>
         <button type="button" data-toggle="modal"
-                data-target="#myModal"> Ajouter
+                data-target="#myModal"> Ajouter</div>
         </button>
     </form>
+
+        <button type="button" onclick="getCheckedValues()"> Supprimer
+        </button>
+
     <?php include("addobject.php") ?>
 
-</div>

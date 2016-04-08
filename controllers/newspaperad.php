@@ -19,17 +19,23 @@ Class newspaperad extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MNewspaperAd->del($id);
-        header('Location:' . WEBROOT . 'newspaperad');
+        if (count($_POST)>0){
+            $this->MNewspaperAd->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'newspaperad');
+        }else{
+            $this->MNewspaperAd->del($id);
+            header('Location:' . WEBROOT . 'newspaperad');
+        }
+
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MNewspaperAd->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'newspaperad');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'newspaperad');
         }
     }
 }

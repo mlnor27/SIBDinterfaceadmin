@@ -12,6 +12,7 @@ Class user extends Model {
         $res = $req->fetch();
         if ($res){
             $_SESSION['name'] = $res['User'];
+            $_SESSION['mdp'] = $d['pwd'];
             return true;
         }else{
             return false;
@@ -19,7 +20,7 @@ Class user extends Model {
     }
 
     function selectTab(){
-        $db = new PDO('mysql:host=localhost;dbname=mysql', "root", "");
+        $db = new PDO('mysql:host=localhost;dbname=mysql', 'root', '');
         $req=$db->query("SELECT Table_name FROM tables_priv WHERE User = '".$_SESSION['name']."'");
         return $req->fetchAll();
 

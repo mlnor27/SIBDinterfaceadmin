@@ -19,18 +19,24 @@ Class competitionitem extends Controller
 
     function delete($id)
     {
-        $this->loadTable();
-        $this->MCompetitionItem->del($id);
-        header('Location:' . WEBROOT . 'competitionitem');
+        if (count($_POST)>0){
+            $this->MCompetitionItem->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'competitionitem');
+
+        }else{
+            $this->MCompetitionItem->del($id);
+            header('Location:' . WEBROOT . 'competitionitem');
+
+        }
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MCompetitionItem->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'competitionitem');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'competitionitem');
         }
     }
 }

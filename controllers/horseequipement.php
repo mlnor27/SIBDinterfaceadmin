@@ -19,17 +19,23 @@ Class horseequipement extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MHorseEquipement->del($id);
-        header('Location:' . WEBROOT . 'horseequipement');
+        if (count($_POST)>0){
+            $this->MHorseEquipement->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'horseequipement');
+        }else{
+            $this->MHorseEquipement->del($id);
+            header('Location:' . WEBROOT . 'horseequipement');
+        }
+
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MHorseEquipement->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseequipement');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseequipement');
         }
     }
 }

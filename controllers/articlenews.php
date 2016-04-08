@@ -19,17 +19,24 @@ Class articlenews extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MArticleNews->del($id);
-        header('Location:' . WEBROOT . 'articlenews');
+        if (count($_POST)>0){
+            $this->MArticleNews->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'articlenews');
+        }else{
+            $this->MArticleNews->del($id);
+            header('Location:' . WEBROOT . 'articlenews');
+        }
+
+
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MArticleNews->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'articlenews');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'articlenews');
         }
     }
 }

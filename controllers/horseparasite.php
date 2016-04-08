@@ -19,17 +19,26 @@ Class horseparasite extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MHorseParasite->del($id);
-        header('Location:' . WEBROOT . 'horseparasite');
+
+        if (count($_POST)>0){
+            $this->MHorseParasite->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'horseparasite');
+
+        }else{
+            $this->MHorseParasite->del($id);
+            header('Location:' . WEBROOT . 'horseparasite');
+
+        }
+
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MHorseParasite->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseparasite');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseparasite');
         }
     }
 }

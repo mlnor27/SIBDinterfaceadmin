@@ -17,17 +17,25 @@ Class competition extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MCompetition->del($id);
-        header('Location:' . WEBROOT . 'competition');
+        if (count($_POST)>0){
+            $this->MCompetition->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'competition');
+
+        }else{
+            $this->MCompetition->del($id);
+            header('Location:' . WEBROOT . 'competition');
+
+        }
+
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MCompetition->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'competition');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'competition');
         }
     }
 }

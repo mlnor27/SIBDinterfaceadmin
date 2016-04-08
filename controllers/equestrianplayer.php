@@ -19,17 +19,24 @@ Class equestrianplayer extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MEquestrianPlayer->del($id);
-        header('Location:' . WEBROOT . 'equestrianplayer');
+        if (count($_POST)>0){
+            $this->MEquestrianPlayer->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'equestrianplayer');
+
+        }else{
+            $this->MEquestrianPlayer->del($id);
+            header('Location:' . WEBROOT . 'equestrianplayer');
+
+        }
     }
 
     function add(){
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MEquestriabPlayer->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'equestrianplayer');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'equestrianplayer');
         }
     }
 }
