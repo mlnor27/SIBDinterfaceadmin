@@ -37,8 +37,8 @@ class Model {
 
 
     public function save($data){
-        if (isset($data[$this->table."_id"]) && !empty($data[$this->table."_id"])) {
-            $sql = "UPDATE " . $this->table . " SET ";
+        if (isset($data[strtolower($this->table)."_id"]) && !empty($data[strtolower($this->table)."_id"])) {
+            $sql = "UPDATE " . strtolower($this->table) . " SET ";
             foreach ($data as $k => $v) {
 
                 if ($k != "id") {
@@ -51,11 +51,11 @@ class Model {
                 }
             }
             $sql = substr($sql,0,-1);
-            $sql .= "WHERE " . $this->table . "_id=" . $data[$this->table . "_id"];
+            $sql .= " WHERE " . strtolower($this->table) . "_id=" . $data[strtolower($this->table) . "_id"];
         }
         else{
-            $sql = "INSERT INTO ".$this->table." (";
-            unset($data[$this->table . "_id"]);
+            $sql = "INSERT INTO ".strtolower($this->table)." (";
+            unset($data[strtolower($this->table) . "_id"]);
             foreach ($data as $k => $v){
                 $sql .= "$k,";
             }
@@ -73,8 +73,9 @@ class Model {
             $sql .= ")";
         }
         $db = connect();
-        //$req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
-        $req = $db->query($sql) or die (header('Location: '));
+        $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+       // $req = $db->query($sql) or die (header('Location: '));
+
 
         if (!isset($data[$this->table."_id"])){
             $this->id = $db->lastInsertId();
@@ -102,7 +103,6 @@ class Model {
     public function selectColumnsName($table)
     {
         $sql= "SELECT DISTINCT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" . $this->table . "'";
-        //echo $sql;
         $db = connect();
         $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
         $results = $req->fetchAll(PDO::FETCH_CLASS);
@@ -112,7 +112,6 @@ class Model {
         }
         return $d;
     }
-
 
 }
 
