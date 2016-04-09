@@ -1,7 +1,7 @@
 <?php
 function connect() {
 
-    $db = new PDO('mysql:host=localhost;dbname=test_turnkey', "root", "");
+    $db = new PDO('mysql:host=localhost;dbname=turnkey', $_SESSION['name'], $_SESSION['mdp']);
     return $db;
 
 }

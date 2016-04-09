@@ -12,6 +12,7 @@ Class user extends Model {
         $res = $req->fetch();
         if ($res){
             $_SESSION['name'] = $res['User'];
+            $_SESSION['mdp'] = $d['pwd'];
             return true;
         }else{
             return false;

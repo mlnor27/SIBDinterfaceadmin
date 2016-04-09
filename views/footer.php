@@ -1,6 +1,4 @@
-<script src="<?= WEBROOT ?>js/jquery.js"></script>
-<script src="<?= WEBROOT ?>js/jquery-ui-1.10.4.min.js"></script>
-<script src="<?= WEBROOT ?>js/jquery-1.8.3.min.js"></script>
+
 <script type="text/javascript" src="<?= WEBROOT ?>js/jquery-ui-1.9.2.custom.min.js"></script>
 <!-- bootstrap -->
 <script src="<?= WEBROOT ?>js/bootstrap.min.js"></script>
@@ -8,12 +6,12 @@
 <script src="<?= WEBROOT ?>js/jquery.scrollTo.min.js"></script>
 <script src="<?= WEBROOT ?>js/jquery.nicescroll.js" type="text/javascript"></script>
 <!-- charts scripts -->
-<script src="<?= WEBROOT ?>assets/jquery-knob/<?= WEBROOT ?>js/jquery.knob.js"></script>
+<script src="<?= WEBROOT ?>assets/jquery-knob/js/jquery.knob.js"></script>
 <script src="<?= WEBROOT ?>js/jquery.sparkline.js" type="text/javascript"></script>
 <script src="<?= WEBROOT ?>assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
 <script src="<?= WEBROOT ?>js/owl.carousel.js"></script>
 <!-- jQuery full calendar -->
-<
+
 <script src="<?= WEBROOT ?>js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
 <script src="<?= WEBROOT ?>assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
 <!--script for this page only-->
