@@ -26,7 +26,7 @@ class Model {
         if (isset($data['limit'])) { $limit = "LIMIT ".$data['limit']; }
         $sql = "SELECT $fields FROM ".$this->table." WHERE $conditions ORDER BY $order $limit";
         $db = connect();
-        $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+        $req = $db->query($sql) or die(header('Location:'.WEBROOT.'error'));
         $results = $req->fetchAll(PDO::FETCH_CLASS);
         $d = array();
         foreach ($results as $r){

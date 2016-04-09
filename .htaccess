@@ -1,7 +1,7 @@
 RewriteEngine on
 RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ index.php?p=$1
 #RewriteRule ^$ index [L]
-
+php_value date.timezone "Europe/Paris"
 #RewriteRule ^css/$ index [L]
 #RewriteRule ^assets/$ auth.php [L]
 #RewriteRule ^controllers/$ auth.php [L]

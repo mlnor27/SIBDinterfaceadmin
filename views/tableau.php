@@ -1,7 +1,4 @@
-<script type="text/javascript" language="javascript" src="<?php WEBROOT ?>js/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php WEBROOT ?>css/jquery.dataTables.min.css">
-<script type="text/javascript" language="javascript" src="<?php WEBROOT ?>js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="<?php WEBROOT ?>js/tableformations.js"></script>
+
 <?php
 
 global $class;
@@ -16,12 +13,14 @@ echo '<h2 id="class_name">'. $class . '</h2>';
         <thead>
         <?php
 
-        echo '<th></th>';
+        echo '<th>check</th>';
         foreach ($content['columns' . $class] as $t) {
             foreach ($t as $value) {
                 echo '<th> ' . $value . ' </th>';
             }
         }
+        echo '<th>delete</th>
+                <th>update</th>';
         ?>
         </thead>
         <tbody>
@@ -44,6 +43,7 @@ echo '<h2 id="class_name">'. $class . '</h2>';
         ?>
         </tbody>
     </table>
+</div>
     <form>
         <button type="button" data-toggle="modal"
                 data-target="#myModal"> Ajouter</div>
