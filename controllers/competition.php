@@ -29,8 +29,16 @@ Class competition extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MCompetition->del($id);
-        header('Location:' . WEBROOT . 'competition');
+        if (count($_POST)>0){
+            $this->MCompetition->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'competition');
+
+        }else{
+            $this->MCompetition->del($id);
+            header('Location:' . WEBROOT . 'competition');
+
+        }
+
     }
 
     function add(){
@@ -38,6 +46,7 @@ Class competition extends Controller
             $this->loadTable();
             $this->MCompetition->save($_POST);
             header('Location:' . WEBROOT . 'competition');
+
         }else{
             header('Location:' . WEBROOT . 'competition');
         }
@@ -48,7 +57,7 @@ Class competition extends Controller
             $this->loadTable();
             $this->MCompetition->save($_POST);
             header('Location:' . WEBROOT . 'competition');
-        }else{
+        }else {
             header('Location:' . WEBROOT);
         }
     }

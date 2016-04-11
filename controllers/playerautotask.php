@@ -30,8 +30,15 @@ Class playerautotask extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MPlayerAutoTask->del($id);
-        header('Location:' . WEBROOT . 'playerautotask');
+
+        if (count($_POST)>0){
+            $this->MPlayerAutoTask->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'playerautotask');
+        }else{
+            $this->MPlayerAutoTask->del($id);
+            header('Location:' . WEBROOT . 'playerautotask');
+        }
+
     }
 
     function add(){

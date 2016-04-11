@@ -31,8 +31,15 @@ Class competitors extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MCompetitors->del($id);
-        header('Location:' . WEBROOT . 'competitors');
+        if (count($_POST)>0){
+            $this->MCompetitors->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'competitors');
+
+        }else{
+            $this->MCompetitors->del($id);
+            header('Location:' . WEBROOT . 'competitors');
+
+        }
     }
 
     function add(){

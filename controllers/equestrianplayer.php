@@ -30,8 +30,15 @@ Class equestrianplayer extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MEquestrianPlayer->del($id);
-        header('Location:' . WEBROOT . 'equestrianplayer');
+        if (count($_POST)>0){
+            $this->MEquestrianPlayer->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'equestrianplayer');
+
+        }else{
+            $this->MEquestrianPlayer->del($id);
+            header('Location:' . WEBROOT . 'equestrianplayer');
+
+        }
     }
 
     function add(){

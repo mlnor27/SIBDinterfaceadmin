@@ -30,8 +30,14 @@ Class horseitem extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MHorseItem->del($id);
-        header('Location:' . WEBROOT . 'horseitem');
+        if (count($_POST)>0){
+            $this->MHorseItem->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'horseitem');
+        }else{
+            $this->MHorseItem->del($id);
+            header('Location:' . WEBROOT . 'horseitem');
+        }
+
     }
 
     function add(){

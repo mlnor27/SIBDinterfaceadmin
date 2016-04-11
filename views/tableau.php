@@ -26,7 +26,8 @@ foreach ($tab as $t) {
 
 }
 
-echo '<h2>' . $class . '</h2>';
+echo '<h2 id="class_name">' . $class . '</h2>';
+
 ?>
 <div class="table-responsive">
 
@@ -55,20 +56,26 @@ echo '<h2>' . $class . '</h2>';
         foreach ($content[$class] as $data) {
             $classId = $class . '_id';
             $id = $data->$classId;
+            /*<<<<<<< HEAD*/
             echo '<tr>';
-            echo '<td> <input type="checkbox" name="check[]" value="' . $id . '"> </td>';
+            echo '<td> <input type="checkbox" class="check_del" name="check[]" value="' . $id . '"> </td>';
             if ($Delete) {
                 echo '<td><a href="' . WEBROOT . $class . '/delete/' . $id . '"><i class="material-icons">delete_forever</i></a></td>';
             }
             if ($Update) {
                 echo '<td><a href="' . WEBROOT . $class . '/update/' . $id . '"><i class="material-icons">mode_edit</i></a></td>';
             }
-            foreach ($data as $key=>$value) {
+            foreach ($data as $key => $value) {
                 if ($key = 'descrption') {
-                    echo '<td> ' . substr($value, 0,25) . ' </td>';
+                    echo '<td> ' . substr($value, 0, 25) . ' </td>';
                 } else {
                     echo '<td> ' . $value . ' </td>';
                 }
+                /*=======
+                            echo '<td> <input type="checkbox" class="check_del" name="check[]" value="' . $id . '"> </td>';
+                            foreach ($data as $value) {
+                                echo '<td> ' . $value . ' </td>';
+                >>>>>>> c943a4859147a1cefd86eb4625a2fe1b37870b83*/
             }
 
             echo '</tr>';
@@ -78,11 +85,17 @@ echo '<h2>' . $class . '</h2>';
         </tbody>
     </table>
 </div>
-<?php if($Insert) { ?>
-<form>
-    <button type="button" data-toggle="modal"
-            data-target="#myModal"> Ajouter
-    </button>
-</form>
+<<<<<<< HEAD
+<?php if ($Insert) { ?>
+    <form>
+        <button type="button" data-toggle="modal"
+                data-target="#myModal"> Ajouter
+        </button>
+    </form>
 
-<?php } include("addobject.php") ?>
+
+<?php }
+
+include("addobject.php") ?>
+<button type="button" onclick="getCheckedValues()"> Supprimer
+</button>

@@ -16,11 +16,12 @@ Class article extends Controller
         $this->render('table');
     }
 
-    function update($id) {
+    function update($id)
+    {
 
         $this->loadTable();
         $d['article'] = $this->MArticle->find(array(
-            'conditions' => 'article_id='.$id
+            'conditions' => 'article_id=' . $id
         ));
         $d['columnsarticle'] = $this->MArticle->selectColumnsName('article');
         $this->set($d);
@@ -30,27 +31,38 @@ Class article extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MArticle->del($id);
-        header('Location:' . WEBROOT . 'article');
+        if (count($_POST) > 0) {
+            $this->MArticle->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'article');
+        } else {
+            $this->MArticle->del($id);
+            header('Location:' . WEBROOT . 'article');
+        }
+
+
     }
 
-    function add(){
-        if (count($_POST)>0) {
+    function add()
+    {
+        if (count($_POST) > 0) {
             $this->loadTable();
             $this->MArticle->save($_POST);
             header('Location:' . WEBROOT . 'article');
-        }else{
+
+        } else {
             header('Location:' . WEBROOT . 'article');
         }
     }
 
-    function updateObject(){
-        if (count($_POST)>0) {
+    function updateObject()
+    {
+        if (count($_POST) > 0) {
             $this->loadTable();
             $this->MArticle->save($_POST);
             header('Location:' . WEBROOT . 'article');
-        }else{
+        } else {
             header('Location:' . WEBROOT);
+        
         }
     }
 

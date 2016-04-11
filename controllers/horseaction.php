@@ -30,8 +30,15 @@ Class horseaction extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MHorseAction->del($id);
-        header('Location:' . WEBROOT . 'horseaction');
+        if (count($_POST)>0){
+            $this->MHorseAction->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'horseaction');
+        }else{
+            $this->MHorseAction->del($id);
+            header('Location:' . WEBROOT . 'horseaction');
+        }
+
+
     }
 
     function add(){
@@ -39,6 +46,7 @@ Class horseaction extends Controller
             $this->loadTable();
             $this->MHorseAction->save($_POST);
             header('Location:' . WEBROOT . 'horseaction');
+
         }else{
             header('Location:' . WEBROOT . 'horseaction');
         }
@@ -49,7 +57,7 @@ Class horseaction extends Controller
             $this->loadTable();
             $this->MHorseAction->save($_POST);
             header('Location:' . WEBROOT . 'horseaction');
-        }else{
+        }else {
             header('Location:' . WEBROOT);
         }
     }

@@ -30,8 +30,15 @@ Class newspaper extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MNewspaper->del($id);
-        header('Location:' . WEBROOT . 'newspaper');
+
+        if (count($_POST)>0){
+            $this->MNewspaper->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'newspaper');
+        }else{
+            $this->MNewspaper->del($id);
+            header('Location:' . WEBROOT . 'newspaper');
+        }
+
     }
 
     function add(){

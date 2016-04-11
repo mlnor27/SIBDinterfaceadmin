@@ -73,8 +73,9 @@ class Model {
             $sql .= ")";
         }
         $db = connect();
-        echo $sql;
         $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+       // $req = $db->query($sql) or die (header('Location: '));
+
 
         if (!isset($data[$this->table."_id"])){
             $this->id = $db->lastInsertId();
@@ -87,13 +88,16 @@ class Model {
 
     public function del($id=null)
     {
-        if($id==null)
-        {
+        if ($id == null) {
             $id = $this->id;
         }
-        $sql= "DELETE FROM ".$this->table." WHERE " .strtolower($this->table)."_id = ".$id;
+
+        $sql = "DELETE FROM " . $this->table . " WHERE " . strtolower($this->table) . "_id IN (". $id.")";
         $db = connect();
-        $req = $db->query($sql) or die ($db->errorInfo()."<br /> => ".$sql);
+        $req = $db->query($sql) or die ($db->errorInfo() . "<br /> => " . $sql);
+        //$req = $db->query($sql) or die ("<script>alert('".$db->errorInfo()."');</script>");
+
+
     }
 
     public function selectColumnsName($table)

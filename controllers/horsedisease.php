@@ -30,8 +30,15 @@ Class horsedisease extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MHorseDisease->del($id);
-        header('Location:' . WEBROOT . 'horsedisease');
+        if (count($_POST)>0){
+            $this->MHorseDisease->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'horsedisease');
+
+        }else{
+            $this->MHorseDisease->del($id);
+            header('Location:' . WEBROOT . 'horsedisease');
+
+        }
     }
 
     function add(){

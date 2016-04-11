@@ -30,8 +30,17 @@ Class horseparasite extends Controller
     function delete($id)
     {
         $this->loadTable();
-        $this->MHorseParasite->del($id);
-        header('Location:' . WEBROOT . 'horseparasite');
+
+        if (count($_POST)>0){
+            $this->MHorseParasite->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'horseparasite');
+
+        }else{
+            $this->MHorseParasite->del($id);
+            header('Location:' . WEBROOT . 'horseparasite');
+
+        }
+
     }
 
     function add(){

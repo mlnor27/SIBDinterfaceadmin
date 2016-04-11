@@ -29,8 +29,15 @@ Class horses extends Controller {
     function delete($id)
     {
         $this->loadTable();
-        $this->MHorse->del($id);
-        header('Location:' . WEBROOT . 'horses');
+        if (count($_POST)>0){
+            $this->MHorse->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'horses');
+
+        }else{
+            $this->MHorse->del($id);
+            header('Location:' . WEBROOT . 'horses');
+        }
+
     }
 
     function add(){

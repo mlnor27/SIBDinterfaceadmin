@@ -30,9 +30,15 @@ Class competitionitem extends Controller
 
     function delete($id)
     {
-        $this->loadTable();
-        $this->MCompetitionItem->del($id);
-        header('Location:' . WEBROOT . 'competitionitem');
+        if (count($_POST)>0){
+            $this->MCompetitionItem->del(array_shift(array_keys($_POST)));
+            header('Location:' . WEBROOT . 'competitionitem');
+
+        }else{
+            $this->MCompetitionItem->del($id);
+            header('Location:' . WEBROOT . 'competitionitem');
+
+        }
     }
 
     function add(){
