@@ -1,2 +1,1 @@
-<img src="<?php echo WEBROOT ?>views/generateimage.php" alt=""/>
-
+<h1>Bienvenue sur votre interface d'administration <span id="name"><?php echo $_SESSION['name'] ?></span> !</h1>

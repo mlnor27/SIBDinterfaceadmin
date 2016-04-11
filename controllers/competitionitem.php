@@ -12,9 +12,20 @@ Class competitionitem extends Controller
         $this->loadTable();
         $d['competitionitem'] = $this->MCompetitionItem->find();
         $d['columnscompetitionitem'] = $this->MCompetitionItem->selectColumnsName('competitionitem');
-
+        $d['privhorses'] = $this->MCompetitionItem->selectTablePriv();
         $this->set($d);
         $this->render('table');
+    }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['competitionitem'] = $this->MCompetitionItem->find(array(
+            'conditions' => 'competitionitem_id='.$id
+        ));
+        $d['columnscompetitionitem'] = $this->MCompetitionItem->selectColumnsName('competitionitem');
+        $this->set($d);
+        $this->render('update');
     }
 
     function delete($id)
@@ -28,11 +39,22 @@ Class competitionitem extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MCompetitionItem->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'competitionitem');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'competitionitem');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MCompetitionItem->save($_POST);
+            header('Location:' . WEBROOT . 'competitionitem');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>

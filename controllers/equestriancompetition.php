@@ -11,9 +11,20 @@ Class equestriancompetition extends Controller
         $this->loadTable();
         $d['equestriancompetition'] = $this->MEquestrianCompetition->find();
         $d['columnsequestriancompetition'] = $this->MEquestrianCompetition->selectColumnsName('equestriancompetition');
-
+        $d['privhorses'] = $this->MEquestrianCompetition->selectTablePriv();
         $this->set($d);
         $this->render('table');
+    }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['equestriancompetition'] = $this->MEquestrianCompetition->find(array(
+            'conditions' => 'equestriancompetition_id='.$id
+        ));
+        $d['columnsequestriancompetition'] = $this->MEquestrianCompetition->selectColumnsName('equestriancompetition');
+        $this->set($d);
+        $this->render('update');
     }
 
     function delete($id)
@@ -27,11 +38,22 @@ Class equestriancompetition extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MEquestrianCompetition->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'equestriancompetition');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'equestriancompetition');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MEquestrianCompetition->save($_POST);
+            header('Location:' . WEBROOT . 'equestriancompetition');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>

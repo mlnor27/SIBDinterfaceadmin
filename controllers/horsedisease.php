@@ -11,9 +11,20 @@ Class horsedisease extends Controller
         $this->loadTable();
         $d['horsedisease'] = $this->MHorseDisease->find();
         $d['columnshorsedisease'] = $this->MHorseDisease->selectColumnsName('horsedisease');
-
+        $d['privhorses'] = $this->MHorseDisease->selectTablePriv();
         $this->set($d);
         $this->render('table');
+    }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['horsedisease'] = $this->MHorseDisease->find(array(
+            'conditions' => 'horsedisease_id='.$id
+        ));
+        $d['columnshorsedisease'] = $this->MHorseDisease->selectColumnsName('horsedisease');
+        $this->set($d);
+        $this->render('update');
     }
 
     function delete($id)
@@ -27,11 +38,22 @@ Class horsedisease extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MHorseDisease->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horsedisease');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horsedisease');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorseDisease->save($_POST);
+            header('Location:' . WEBROOT . 'horsedisease');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>

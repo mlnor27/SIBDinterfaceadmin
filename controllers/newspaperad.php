@@ -11,9 +11,20 @@ Class newspaperad extends Controller
         $this->loadTable();
         $d['newspaperad'] = $this->MNewspaperAd->find();
         $d['columnsnewspaperad'] = $this->MNewspaperAd->selectColumnsName('newspaperad');
-
+        $d['privhorses'] = $this->MNewspaperAd->selectTablePriv();
         $this->set($d);
         $this->render('table');
+    }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['newspaperad'] = $this->MNewspaperAd->find(array(
+            'conditions' => 'newspaperad_id='.$id
+        ));
+        $d['columnsnewspaperad'] = $this->MNewspaperAd->selectColumnsName('newspaperad');
+        $this->set($d);
+        $this->render('update');
     }
 
     function delete($id)
@@ -27,11 +38,22 @@ Class newspaperad extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MNewspaperAd->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'newspaperad');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'newspaperad');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MNewspaperAd->save($_POST);
+            header('Location:' . WEBROOT . 'newspaperad');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>

@@ -11,9 +11,20 @@ Class player extends Controller
         $this->loadTable();
         $d['player'] = $this->MPlayer->find();
         $d['columnsplayer'] = $this->MPlayer->selectColumnsName('player');
-
+        $d['privhorses'] = $this->MPlayer->selectTablePriv();
         $this->set($d);
         $this->render('table');
+    }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['player'] = $this->MPlayer->find(array(
+            'conditions' => 'player_id='.$id
+        ));
+        $d['columnsplayer'] = $this->MPlayer->selectColumnsName('player');
+        $this->set($d);
+        $this->render('update');
     }
 
     function delete($id)
@@ -27,11 +38,22 @@ Class player extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MPlayer->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'player');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'player');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MPlayer->save($_POST);
+            header('Location:' . WEBROOT . 'player');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>

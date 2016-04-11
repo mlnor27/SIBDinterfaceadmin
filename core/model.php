@@ -109,6 +109,71 @@ class Model {
         return $d;
     }
 
+    public function selectCountHorse()
+    {
+        $sql= "SELECT COUNT(*) FROM horses";
+        $db = connect();
+        $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+        $results = $req->fetchAll(PDO::FETCH_CLASS);
+        $d = array();
+        foreach ($results as $r){
+            $d[] = $r;
+        }
+        return $d;
+    }
+
+    public function selectCountPlayer()
+    {
+        $sql= "SELECT COUNT(*) FROM player";
+        $db = connect();
+        $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+        $results = $req->fetchAll(PDO::FETCH_CLASS);
+        $d = array();
+        foreach ($results as $r){
+            $d[] = $r;
+        }
+        return $d;
+    }
+
+    public function selectCountEquipement()
+    {
+        $sql= "SELECT COUNT(*) FROM equipement";
+        $db = connect();
+        $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+        $results = $req->fetchAll(PDO::FETCH_CLASS);
+        $d = array();
+        foreach ($results as $r){
+            $d[] = $r;
+        }
+        return $d;
+    }
+
+    public function selectCountItem()
+    {
+        $sql= "SELECT COUNT(*) FROM item";
+        $db = connect();
+        $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+        $results = $req->fetchAll(PDO::FETCH_CLASS);
+        $d = array();
+        foreach ($results as $r){
+            $d[] = $r;
+        }
+        return $d;
+    }
+
+    public function selectTablePriv()
+    {
+        $sql= "SELECT Table_priv FROM tables_priv WHERE Table_name='" . strtolower($this->table) . "' AND User='".$_SESSION['name']."'";
+        $db = new PDO('mysql:host=localhost;dbname=mysql', "root", "");
+        $req = $db->query($sql) or die($db->errorInfo()."<br /> => ".$sql);
+        $results = $req->fetchAll(PDO::FETCH_CLASS);
+        $d = array();
+        foreach ($results as $r){
+            $d[] = $r;
+        }
+        return $d;
+    }
+
 }
 
 ?>

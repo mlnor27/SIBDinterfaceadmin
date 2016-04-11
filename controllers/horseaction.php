@@ -11,8 +11,20 @@ Class horseaction extends Controller
         $this->loadTable();
         $d['horseaction'] = $this->MHorseAction->find();
         $d['columnshorseaction'] = $this->MHorseAction->selectColumnsName('horseaction');
+        $d['privhorses'] = $this->MHorseAction->selectTablePriv();
         $this->set($d);
         $this->render('table');
+    }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['horseaction'] = $this->MHorseAction->find(array(
+            'conditions' => 'horseaction_id='.$id
+        ));
+        $d['columnshorseaction'] = $this->MHorseAction->selectColumnsName('horseaction');
+        $this->set($d);
+        $this->render('update');
     }
 
     function delete($id)
@@ -26,11 +38,22 @@ Class horseaction extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MHorseAction->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseaction');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseaction');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorseAction->save($_POST);
+            header('Location:' . WEBROOT . 'horseaction');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>

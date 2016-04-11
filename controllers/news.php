@@ -10,9 +10,20 @@ Class news extends Controller
         $this->loadTable();
         $d['news'] = $this->MNews->find();
         $d['columnsnews'] = $this->MNews->selectColumnsName('news');
-
+        $d['privhorses'] = $this->MNews->selectTablePriv();
         $this->set($d);
         $this->render('table');
+    }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['news'] = $this->MNews->find(array(
+            'conditions' => 'news_id='.$id
+        ));
+        $d['columnsnews'] = $this->MNews->selectColumnsName('news');
+        $this->set($d);
+        $this->render('update');
     }
 
     function delete($id)
@@ -26,11 +37,22 @@ Class news extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MNews->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'news');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'news');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MNews->save($_POST);
+            header('Location:' . WEBROOT . 'news');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>

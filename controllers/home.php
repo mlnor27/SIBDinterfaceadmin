@@ -2,23 +2,24 @@
 
 Class home extends Controller {
 
-    var $models = array('User');
+    var $models = array('MHorse');
     var $layout;
 
     function index() {
+
+        $d['counthorses'] = $this->MHorse->selectCountHorse();
+
+        /*        $d['countplayer'] = $this->MPlayer->selectCountPlayer();
+                $d['countequipement'] = $this->MEquipement->selectCountEquipement();
+                $d['countitem'] = $this->MItem->selectCountItem();*/
+        $this->set($d);
         $this->loadTable();
         $this->render('index');
 
     }
 
-    function view($id) {
+    function view() {
 
-        $d['horse'] = $this->Horse->find(array(
-            'conditions' => 'horse_id='.$id
-        ));
-        $d['horse'] = $d['horse'][0];
-        $this->set($d);
-        $this->render('view');
     }
 
 }

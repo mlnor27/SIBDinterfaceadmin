@@ -10,6 +10,7 @@ Class horses extends Controller {
         $this->loadTable();
         $d['horses'] = $this->MHorse->find();
         $d['columnshorses'] = $this->MHorse->selectColumnsName('horses');
+        $d['privhorses'] = $this->MHorse->selectTablePriv();
         $this->set($d);
         $this->render('table');
     }

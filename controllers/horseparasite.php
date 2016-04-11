@@ -11,9 +11,20 @@ Class horseparasite extends Controller
         $this->loadTable();
         $d['horseparasite'] = $this->MHorseParasite->find();
         $d['columnshorseparasite'] = $this->MHorseParasite->selectColumnsName('horseparasite');
-
+        $d['privhorses'] = $this->MHorseParasite->selectTablePriv();
         $this->set($d);
         $this->render('table');
+    }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['horseparasite'] = $this->MHorseParasite->find(array(
+            'conditions' => 'horseparasite_id='.$id
+        ));
+        $d['columnshorseparasite'] = $this->MHorseParasite->selectColumnsName('horseparasite');
+        $this->set($d);
+        $this->render('update');
     }
 
     function delete($id)
@@ -27,11 +38,22 @@ Class horseparasite extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MHorseParasite->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseparasite');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseparasite');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorseParasite->save($_POST);
+            header('Location:' . WEBROOT . 'horseparasite');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>

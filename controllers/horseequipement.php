@@ -11,10 +11,22 @@ Class horseequipement extends Controller
         $this->loadTable();
         $d['horseequipement'] = $this->MHorseEquipement->find();
         $d['columnshorseequipement'] = $this->MHorseEquipement->selectColumnsName('horseequipement');
-
+        $d['privhorses'] = $this->MHorseEquipement->selectTablePriv();
         $this->set($d);
         $this->render('table');
     }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['horseequipement'] = $this->MHorseEquipement->find(array(
+            'conditions' => 'horseequipement_id='.$id
+        ));
+        $d['columnshorseequipement'] = $this->MHorseEquipement->selectColumnsName('horseequipement');
+        $this->set($d);
+        $this->render('update');
+    }
+
 
     function delete($id)
     {
@@ -27,11 +39,22 @@ Class horseequipement extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MHorseEquipement->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseequipement');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseequipement');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorseEquipement->save($_POST);
+            header('Location:' . WEBROOT . 'horseequipement');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>

@@ -11,9 +11,20 @@ Class horseplayer extends Controller
         $this->loadTable();
         $d['horseplayer'] = $this->MHorsePlayer->find();
         $d['columnshorseplayer'] = $this->MHorsePlayer->selectColumnsName('horseplayer');
-
+        $d['privhorses'] = $this->MHorsePlayer->selectTablePriv();
         $this->set($d);
         $this->render('table');
+    }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['horseplayer'] = $this->MHorsePlayer->find(array(
+            'conditions' => 'horseplayer_id='.$id
+        ));
+        $d['columnshorseplayer'] = $this->MHorsePlayer->selectColumnsName('horseplayer');
+        $this->set($d);
+        $this->render('update');
     }
 
     function delete($id)
@@ -27,11 +38,22 @@ Class horseplayer extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MHorsePlayer->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseplayer');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'horseplayer');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MHorsePlayer->save($_POST);
+            header('Location:' . WEBROOT . 'horseplayer');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>

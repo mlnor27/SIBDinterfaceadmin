@@ -11,9 +11,20 @@ Class playerautotask extends Controller
         $this->loadTable();
         $d['playerautotask'] = $this->MPlayerAutoTask->find();
         $d['columnsplayerautotask'] = $this->MPlayerAutoTask->selectColumnsName('playerautotask');
-
+        $d['privhorses'] = $this->MPlayerAutoTask->selectTablePriv();
         $this->set($d);
         $this->render('table');
+    }
+
+    function update($id) {
+
+        $this->loadTable();
+        $d['playerautotask'] = $this->MPlayerAutoTask->find(array(
+            'conditions' => 'playerautotask_id='.$id
+        ));
+        $d['columnsplayerautotask'] = $this->MPlayerAutoTask->selectColumnsName('playerautotask');
+        $this->set($d);
+        $this->render('update');
     }
 
     function delete($id)
@@ -27,11 +38,22 @@ Class playerautotask extends Controller
         if (count($_POST)>0) {
             $this->loadTable();
             $this->MPlayerAutoTask->save($_POST);
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'playerautotask');
         }else{
-            header('Location:' . WEBROOT . 'horses');
+            header('Location:' . WEBROOT . 'playerautotask');
         }
     }
+
+    function updateObject(){
+        if (count($_POST)>0) {
+            $this->loadTable();
+            $this->MPlayerAutoTask->save($_POST);
+            header('Location:' . WEBROOT . 'playerautotask');
+        }else{
+            header('Location:' . WEBROOT);
+        }
+    }
+
 }
 
 ?>
