@@ -8,7 +8,7 @@ Class user extends Model {
 
     function connection($d){
         $db = new PDO('mysql:host=localhost;dbname=mysql', "root", "");
-        $req=$db->query("SELECT * FROM user WHERE User = '".$d['log']."' AND Password = Password('".$d['pwd']."')");
+        $req=$db->query("SELECT * FROM user WHERE User = '".htmlspecialchars($d['log'])."' AND Password = Password('".htmlspecialchars($d['pwd'])."')");
         $res = $req->fetch();
         if ($res){
 
@@ -20,7 +20,7 @@ Class user extends Model {
                 return true;
             }else{
 
-                header('Location: http://'.$_SERVER['SERVER_NAME'].'/phpmyadmin');
+                header('Location: http://'.$_SERVER['SERVER_NAME'].'/mysql');
                 exit;
             }
 

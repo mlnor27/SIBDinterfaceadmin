@@ -96,6 +96,8 @@ echo '<h2 id="class_name">' . $class . '</h2>';
 
 <?php }
 
-include("addobject.php") ?>
+include("addobject.php");
+if ($Delete) { ?>
 <button type="button" onclick="getCheckedValues()"> Supprimer
 </button>
+<?php } ?>

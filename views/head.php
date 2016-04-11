@@ -43,15 +43,15 @@
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script type="text/javascript" language="javascript" src="<?php WEBROOT ?>../js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo WEBROOT ?>js/jquery.js"></script>
 
     <script src="<?= WEBROOT ?>js/html5shiv.js"></script>
     <script src="<?= WEBROOT ?>js/respond.min.js"></script>
     <script src="<?= WEBROOT ?>js/lte-ie7.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="<?php WEBROOT ?>../css/jquery.dataTables.min.css">
-    <script type="text/javascript" language="javascript" src="<?php WEBROOT ?>../js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" language="javascript" src="<?php WEBROOT ?>../js/tableformations.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo WEBROOT ?>css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="<?php echo WEBROOT ?>js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="<?php echo WEBROOT ?>js/tableformations.js"></script>
 
 
     <![endif]-->

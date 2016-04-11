@@ -34,7 +34,7 @@
     <p class="text-404">404</p>
 
     <h2>Aww Snap!</h2>
-    <p>Something went wrong or that page doesn’t exist yet. <br><a href="">Return Home</a></p>
+    <p>Something went wrong or that page doesn’t exist yet. <br><a href="<?php echo WEBROOT ?>">Return Home</a></p>
 </div>
 </body>
 </html>
