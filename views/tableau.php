@@ -85,7 +85,7 @@ echo '<h2 id="class_name">' . $class . '</h2>';
         </tbody>
     </table>
 </div>
-<<<<<<< HEAD
+
 <?php if ($Insert) { ?>
     <form>
         <button type="button" data-toggle="modal"

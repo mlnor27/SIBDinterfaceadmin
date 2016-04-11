@@ -62,7 +62,7 @@ Class article extends Controller
             header('Location:' . WEBROOT . 'article');
         } else {
             header('Location:' . WEBROOT);
-        
+
         }
     }
 
